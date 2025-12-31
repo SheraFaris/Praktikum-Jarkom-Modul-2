@@ -1,0 +1,158 @@
+(1)
+Subnet yang akan digunakan: 255.255.255.0 alias /24
+-  Subnet yang awam digunakan
+
+IP prefix yang digunakan 192.168.0.0/24
+
+(2)
+[IronMan}
+# DHCP config for eth0
+auto eth0
+iface eth0 inet dhcp 
+
+
+# Static config for eth1
+auto eth1
+iface eth1 inet static
+	address 192.168.1.1
+	netmask 255.255.255.0
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+# Static config for eth2
+auto eth2
+iface eth2 inet static
+	address 192.168.2.1
+	netmask 255.255.255.0
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+up ip route add 192.168.3.0/24 via 192.168.1.2 
+up ip route add 192.168.4.0/24 via 192.168.1.2 
+up ip route add 192.168.5.0/24 via 192.168.2.2 
+up ip route add 192.168.6.0/24 via 192.168.2.2 
+
+apt update
+apt install iptables
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.168.0.0/16
+
+
+[BlackWidow]
+# Static config for eth0
+auto eth0
+iface eth0 inet static
+	address 192.168.2.2
+	netmask 255.255.255.0
+	gateway 192.168.2.1
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+# Static config for eth1
+auto eth1
+iface eth1 inet static
+	address 192.168.5.1
+	netmask 255.255.255.0
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+# Static config for eth2
+auto eth2
+iface eth1 inet static
+	address 192.168.6.1
+	netmask 255.255.255.0
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+
+[Hulk]
+# Static config for eth0
+auto eth0
+iface eth0 inet static
+	address 192.168.5.2
+	netmask 255.255.255.0
+	gateway 192.168.5.1
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+
+[Vision]
+# Static config for eth0
+auto eth0
+iface eth0 inet static
+	address 192.168.5.3
+	netmask 255.255.255.0
+	gateway 192.168.5.1
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+# Static config for eth1
+auto eth1
+iface eth1 inet static
+	address 192.168.7.1
+	netmask 255.255.255.0
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[BlackPanther]
+# Static config for eth0
+auto eth0
+iface eth0 inet static
+	address 192.168.1.2
+	netmask 255.255.255.0
+	gateway 192.168.1.1
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+# Static config for eth1
+auto eth1
+iface eth1 inet static
+	address 192.168.3.1
+	netmask 255.255.255.0
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+# Static config for eth2
+auto eth2
+iface eth2 inet static
+	address 192.168.4.1
+	netmask 255.255.255.0
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+up ip route add 192.168.2.0/24 via 192.168.1.1 
+up ip route add 192.168.5.0/24 via 192.168.2.2 
+up ip route add 192.168.6.0/24 via 192.168.2.2 
+
+
+
+[CaptainAmerica]
+# Static config for eth0
+auto eth0
+iface eth0 inet static
+	address 192.168.3.2
+	netmask 255.255.255.0
+	gateway 192.168.3.1
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+
+[Falcon]
+# Static config for eth0
+auto eth0
+iface eth0 inet static
+	address 192.168.3.3
+	netmask 255.255.255.0
+	gateway 192.168.3.1
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+
+[WinterSoldier]
+# Static config for eth0
+auto eth0
+iface eth0 inet static
+	address 192.168.4.2
+	netmask 255.255.255.0
+	gateway 192.168.4.1
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+
+[Hawkeye]
+# Static config for eth0
+auto eth0
+iface eth0 inet static
+	address 192.168.4.3
+	netmask 255.255.255.0
+	gateway 192.168.4.1
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
