@@ -417,3 +417,45 @@ host Hawkeye {
     hardware ethernet 02:42:0b:ac:48:00;
     fixed-address 192.168.4.5;
 }
+
+
+(9)
+CaptainAmerica
+
+
+
+WinterSoldier
+
+apt update
+apt install isc-dhcp-server -y
+
+CaptainAmerica (PRIMARY)
+failover peer "dhcp-failover" {
+    primary;
+    address 192.168.3.2;
+    port 647;
+
+    peer address 192.168.4.2;
+    peer port 647;
+
+    max-response-delay 60;
+    max-unacked-updates 10;
+    load balance max seconds 3;
+
+    mclt 3600;
+    split 128;
+}
+
+WinterSoldier (SECONDARY)
+failover peer "dhcp-failover" {
+    secondary;
+    address 192.168.4.2;
+    port 647;
+
+    peer address 192.168.3.2;
+    peer port 647;
+
+    max-response-delay 60;
+    max-unacked-updates 10;
+    load balance max seconds 3;
+}
