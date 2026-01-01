@@ -430,6 +430,7 @@ apt update
 apt install isc-dhcp-server -y
 
 CaptainAmerica (PRIMARY)
+authoritative;
 failover peer "dhcp-failover" {
     primary;
     address 192.168.3.2;
@@ -440,8 +441,9 @@ failover peer "dhcp-failover" {
 
     max-response-delay 60;
     max-unacked-updates 10;
-    load balance max seconds 3;
 
+	# LOAD BALANCING
+    load balance max seconds 3;
     mclt 3600;
     split 128;
 }
@@ -457,5 +459,7 @@ failover peer "dhcp-failover" {
 
     max-response-delay 60;
     max-unacked-updates 10;
+	
+	# LOAD BALANCING
     load balance max seconds 3;
 }
