@@ -279,12 +279,12 @@ subnet 192.168.7.0 netmask 255.255.255.0 {
 }
 
 host SpiderMan {
-    hardware ethernet 02:42:5f:f6:29:00;
+    hardware ethernet 02:42:c4:d4:42:00;
     fixed-address 192.168.7.60;   
 }
 
 host DoctorStrange  {
-    hardware ethernet 02:42:96:01:65:00;
+    hardware ethernet 02:42:3a:18:c8:00;
     fixed-address 192.168.7.110;  
 }
 
