@@ -72,12 +72,12 @@
   `Saya berhasil mengubungkan seluruh device menggunakan static routing. Falcon dapat berhasil terhubung ke SpiderMan, DoctorStrange, dan ScarletWitch dikarenakan modifikasi yang saya tambahkan pada router Ironman dan BlackWidow.` 
 <br>
 
-  `Static routing Ironman berupa':
-    - up ip route add 192.168.3.0/24 via 192.168.1.2
-    - up ip route add 192.168.4.0/24 via 192.168.1.2
-    - up ip route add 192.168.5.0/24 via 192.168.2.2
-    - up ip route add 192.168.6.0/24 via 192.168.2.2
-    - up ip route add 192.168.7.0/24 via 192.168.2.2
+  `Static routing Ironman:`
+  - up ip route add 192.168.3.0/24 via 192.168.1.2
+  - up ip route add 192.168.4.0/24 via 192.168.1.2
+  - up ip route add 192.168.5.0/24 via 192.168.2.2
+  - up ip route add 192.168.6.0/24 via 192.168.2.2
+  - up ip route add 192.168.7.0/24 via 192.168.2.2  
   
   `Static routing BlackWidow: up ip route add 192.168.7.0/24 via 192.168.5.3`
   
