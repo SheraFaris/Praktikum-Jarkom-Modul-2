@@ -93,11 +93,18 @@
 
 - Screenshot
 
-  `Put your screenshot in here`
+  <img width="939" height="321" alt="image" src="https://github.com/user-attachments/assets/b8e71ee5-ee84-4b74-9429-246fc1707ced" />
+  <img width="975" height="324" alt="image" src="https://github.com/user-attachments/assets/76c8d6ea-f76d-4b20-86ca-861d532d4256" />
+  <img width="1103" height="538" alt="image" src="https://github.com/user-attachments/assets/7c5772c6-b592-4643-adfa-aba823cbd1ba" />
+  <img width="906" height="339" alt="image" src="https://github.com/user-attachments/assets/1c50caf3-7387-45c3-9354-735f1eb8c296" />
 
 - Explanation
 
-  `Put your explanation in here`
+  `Dengan memasukkan command ini ke terminal:
+  - apt update
+  - apt install iptables
+  - iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.168.0.0/16
+  Saya berhasil menghubungkan device ke internet`
 
 <br>
 
