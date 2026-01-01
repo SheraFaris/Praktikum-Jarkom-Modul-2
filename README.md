@@ -7,7 +7,8 @@
 
 ## Put your topology config image here!
 
-`Put image in here`
+<img width="1388" height="681" alt="image" src="https://github.com/user-attachments/assets/e3f13cb9-08b9-4f85-b85d-b5d84d53d5e6" />
+
 
 ## Put your GNS3 Project file here!
 
@@ -25,11 +26,28 @@
 
 - Screenshot
 
-  `Put your screenshot in here`
+  <img width="882" height="683" alt="image" src="https://github.com/user-attachments/assets/66296e65-d35e-4754-af46-f22bc72105be" />
+  <img width="778" height="670" alt="image" src="https://github.com/user-attachments/assets/78b5f2f5-66f9-4fd2-9988-1554a76bad2c" />
+  <img width="803" height="708" alt="image" src="https://github.com/user-attachments/assets/e9ae253c-bd7d-4ae3-aba4-e674f2b9fa66" />
+  <img width="875" height="697" alt="image" src="https://github.com/user-attachments/assets/1e4d051c-bce6-44a3-94e3-2d24c63bf9db" />
 
+  _`Untuk melihat pengelompokan subnet yang lebih lengkap dapat ditemukan pada bagian eksplansi atau di dokumentasi.txt di atas`_
+
+  
 - Explanation
 
   `Put your explanation in here`
+
+  
+  | No | Subnet         | Netmask       | Gateway     | Router Pengelola | Perangkat / Host       | Fungsi                        |
+  | -- | -------------- | ------------- | ----------- | ---------------- | ---------------------- | ----------------------------- |
+  | 1  | 192.168.1.0/24 | 255.255.255.0 | 192.168.1.1 | IronMan          | BlackPanther           | Backbone antar router (kiri)  |
+  | 2  | 192.168.2.0/24 | 255.255.255.0 | 192.168.2.1 | IronMan          | BlackWidow             | Backbone antar router (kanan) |
+  | 3  | 192.168.3.0/24 | 255.255.255.0 | 192.168.3.1 | BlackPanther     | Falcon, CaptainAmerica | LAN User kiri atas            |
+  | 4  | 192.168.4.0/24 | 255.255.255.0 | 192.168.4.1 | BlackPanther     | WinterSoldier, Hawkeye | LAN User kiri bawah           |
+  | 5  | 192.168.5.0/24 | 255.255.255.0 | 192.168.5.1 | BlackWidow       | Thor, ScarletWitch     | LAN User kanan atas           |
+  | 6  | 192.168.6.0/24 | 255.255.255.0 | 192.168.6.1 | BlackWidow       | Hulk                   | LAN User kanan bawah          |
+
 
 <br>
 
@@ -45,10 +63,21 @@
 
   `Put your screenshot in here`
 
+
+  <img width="900" height="851" alt="image" src="https://github.com/user-attachments/assets/82b61221-426b-4e25-94ed-c4d123162c06" />  
+  
+
 - Explanation
 
-  `Put your explanation in here`
-
+  `Saya berhasil mengubungkan seluruh device menggunakan static routing. Falcon dapat berhasil terhubung ke SpiderMan, DoctorStrange, dan ScarletWitch dikarenakan modifikasi yang saya tambahkan pada router Ironman dan BlackWidow.` 
+  `Static routing Ironman berupa:
+    - up ip route add 192.168.3.0/24 via 192.168.1.2
+    - up ip route add 192.168.4.0/24 via 192.168.1.2
+    - up ip route add 192.168.5.0/24 via 192.168.2.2
+    - up ip route add 192.168.6.0/24 via 192.168.2.2
+    - up ip route add 192.168.7.0/24 via 192.168.2.2`
+  
+  `Static routing BlackWidow: up ip route add 192.168.7.0/24 via 192.168.5.3`
 <br>
 
 ## Soal 3
