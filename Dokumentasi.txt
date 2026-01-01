@@ -83,12 +83,15 @@ iface eth0 inet static
 
 [Hulk]
 # Static config for eth0
+#auto eth0
+#iface eth0 inet static
+#	address 192.168.5.2
+#	netmask 255.255.255.0
+#	gateway 192.168.5.1
+#	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
 auto eth0
-iface eth0 inet static
-	address 192.168.5.2
-	netmask 255.255.255.0
-	gateway 192.168.5.1
-	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+iface eth0 inet dhcp
 
 
 [Vision]
@@ -167,13 +170,15 @@ iface eth0 inet static
 
 [Falcon]
 # Static config for eth0
-auto eth0
-iface eth0 inet static
-	address 192.168.3.3
-	netmask 255.255.255.0
-	gateway 192.168.3.1
-	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+#auto eth0
+#iface eth0 inet static
+#	address 192.168.3.3
+#	netmask 255.255.255.0
+#	gateway 192.168.3.1
+#	up echo nameserver 192.168.122.1 > /etc/resolv.conf
 
+auto eth0
+iface eth0 inet dhcp
 
 [WinterSoldier]
 # Static config for eth0
@@ -187,17 +192,23 @@ iface eth0 inet static
 
 [Hawkeye]
 # Static config for eth0
+#auto eth0
+#iface eth0 inet static
+#	address 192.168.4.3
+#	netmask 255.255.255.0
+#	gateway 192.168.4.1
+#	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
 auto eth0
-iface eth0 inet static
-	address 192.168.4.3
-	netmask 255.255.255.0
-	gateway 192.168.4.1
-	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+iface eth0 inet dhcp
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 (4) Berikan Falcon alamat IP dalam rentang [Prefix IP].3.20 - [Prefix IP].3.25
 Berikan Hawkeye alamat IP dalam rentang [Prefix IP].4.30 - [Prefix IP].4.35
 Berikan Hulk alamat IP dalam rentang [Prefix IP].6.50 - [Prefix IP].6.55
+
+Konfigurasi DHCP Server
 
 apt-get update
 apt-get install isc-dhcp-server
@@ -225,3 +236,23 @@ subnet 192.168.6.0 netmask 255.255.255.0 {
     option routers 192.168.6.1;
     option domain-name-servers 192.168.122.1;
 }
+
+
+service isc-dhcp-server restart
+
+
+Konfigurasi DHCP Relay
+
+[BlackPanther]
+apt-get update
+apt-get install isc-dhcp-relay -y
+service isc-dhcp-relay start
+
+nano /etc/default/isc-dhcp-relay
+SERVERS="192.168.3.2"
+INTERFACES="eth0 eth1 eth2"
+OPTIONS=
+
+nano /etc/sysctl.conf 
+service isc-dhcp-relay restart
+net.ipv4.ip_forward=1
