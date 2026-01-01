@@ -61,6 +61,26 @@ iface eth2 inet static
 up ip route add 192.168.7.0/24 via 192.168.5.3
 
 
+[Thor]
+# Static config for eth0
+auto eth0
+iface eth0 inet static
+	address 192.168.6.3
+	netmask 255.255.255.0
+	gateway 192.168.6.1
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+
+[ScarletWitch]
+# Static config for eth0
+auto eth0
+iface eth0 inet static
+	address 192.168.6.2
+	netmask 255.255.255.0
+	gateway 192.168.6.1
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+
 [Hulk]
 # Static config for eth0
 auto eth0
@@ -133,7 +153,6 @@ iface eth2 inet static
 	address 192.168.4.1
 	netmask 255.255.255.0
 	up echo nameserver 192.168.122.1 > /etc/resolv.conf
-
 
 
 [CaptainAmerica]
