@@ -5,11 +5,10 @@ Subnet yang akan digunakan: 255.255.255.0 alias /24
 IP prefix yang digunakan 192.168.0.0/24
 
 (2)
-[IronMan}
+[IronMan]
 # DHCP config for eth0
 auto eth0
-iface eth0 inet dhcp 
-
+iface eth0 inet dhcp
 
 # Static config for eth1
 auto eth1
@@ -28,7 +27,8 @@ iface eth2 inet static
 up ip route add 192.168.3.0/24 via 192.168.1.2 
 up ip route add 192.168.4.0/24 via 192.168.1.2 
 up ip route add 192.168.5.0/24 via 192.168.2.2 
-up ip route add 192.168.6.0/24 via 192.168.2.2 
+up ip route add 192.168.6.0/24 via 192.168.2.2
+up ip route add 192.168.7.0/24 via 192.168.2.2  
 
 apt update
 apt install iptables
@@ -53,10 +53,12 @@ iface eth1 inet static
 
 # Static config for eth2
 auto eth2
-iface eth1 inet static
+iface eth2 inet static
 	address 192.168.6.1
 	netmask 255.255.255.0
 	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+up ip route add 192.168.7.0/24 via 192.168.5.3
 
 
 [Hulk]
@@ -85,8 +87,29 @@ iface eth1 inet static
 	netmask 255.255.255.0
 	up echo nameserver 192.168.122.1 > /etc/resolv.conf
 
+[DoctorStrange]
+# Static config for eth0
+auto eth0
+iface eth0 inet static
+	address 192.168.7.2
+	netmask 255.255.255.0
+	gateway 192.168.7.1
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+
+[SpiderMan]
+# Static config for eth0
+auto eth0
+iface eth0 inet static
+	address 192.168.7.3
+	netmask 255.255.255.0
+	gateway 192.168.7.1
+	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 [BlackPanther]
 # Static config for eth0
@@ -114,7 +137,6 @@ iface eth2 inet static
 up ip route add 192.168.2.0/24 via 192.168.1.1 
 up ip route add 192.168.5.0/24 via 192.168.2.2 
 up ip route add 192.168.6.0/24 via 192.168.2.2 
-
 
 
 [CaptainAmerica]
