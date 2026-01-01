@@ -193,4 +193,35 @@ iface eth0 inet static
 	netmask 255.255.255.0
 	gateway 192.168.4.1
 	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+(4) Berikan Falcon alamat IP dalam rentang [Prefix IP].3.20 - [Prefix IP].3.25
+Berikan Hawkeye alamat IP dalam rentang [Prefix IP].4.30 - [Prefix IP].4.35
+Berikan Hulk alamat IP dalam rentang [Prefix IP].6.50 - [Prefix IP].6.55
+
+apt-get update
+apt-get install isc-dhcp-server
+dhcpd --version
+
+nano /etc/default/isc-dhcp-server
+INTERFACESv4="eth0"
+
+
+nano /etc/dhcp/dhcpd.conf
+subnet 192.168.3.0 netmask 255.255.255.0 {
+    range 192.168.3.20 192.168.3.25;
+    option routers 192.168.3.1;
+    option domain-name-servers 192.168.122.1;
+}
+
+subnet 192.168.4.0 netmask 255.255.255.0 {
+    range 192.168.4.30 192.168.4.35;
+    option routers 192.168.4.1;
+    option domain-name-servers 192.168.122.1;
+}
+
+subnet 192.168.6.0 netmask 255.255.255.0 {
+    range 192.168.6.50 192.168.6.55;
+    option routers 192.168.6.1;
+    option domain-name-servers 192.168.122.1;
+}
