@@ -121,24 +121,30 @@ iface eth1 inet static
 
 [DoctorStrange]
 # Static config for eth0
+#auto eth0
+#iface eth0 inet static
+#	address 192.168.7.2
+#	netmask 255.255.255.0
+#	gateway 192.168.7.1
+#	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
 auto eth0
-iface eth0 inet static
-	address 192.168.7.2
-	netmask 255.255.255.0
-	gateway 192.168.7.1
-	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+iface eth0 inet dhcp
+hwaddress ether 02:42:3a:18:c8:00
 
 
 [SpiderMan]
 # Static config for eth0
+#auto eth0
+#iface eth0 inet static
+#	address 192.168.7.3
+#	netmask 255.255.255.0
+#	gateway 192.168.7.1
+#	up echo nameserver 192.168.122.1 > /etc/resolv.conf
+
 auto eth0
-iface eth0 inet static
-	address 192.168.7.3
-	netmask 255.255.255.0
-	gateway 192.168.7.1
-	up echo nameserver 192.168.122.1 > /etc/resolv.conf
-
-
+iface eth0 inet dhcp
+hwaddress ether 02:42:c4:d4:42:00
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -246,6 +252,41 @@ subnet 192.168.6.0 netmask 255.255.255.0 {
     option domain-name-servers 192.168.122.1;
 }
 
+subnet 192.168.5.0 netmask 255.255.255.0 {
+    option routers 192.168.5.1;
+    option domain-name-servers 192.168.122.1;
+
+    range 192.168.5.40 192.168.5.45;
+    range 192.168.5.100 192.168.5.105;
+}
+
+host ScarletWitch {
+    hardware ethernet 02:42:5f:f6:29:00;
+    fixed-address 192.168.5.40;   # pilih salah satu di range 40-45
+}
+
+host Thor {
+    hardware ethernet 02:42:96:01:65:00;
+    fixed-address 192.168.5.100;  # pilih salah satu di range 100-105
+}
+
+subnet 192.168.7.0 netmask 255.255.255.0 {
+    option routers 192.168.7.1;
+    option domain-name-servers 192.168.122.1;
+
+    range 192.168.7.60 192.168.7.65;
+    range 192.168.7.110 192.168.7.115;
+}
+
+host SpiderMan {
+    hardware ethernet 02:42:5f:f6:29:00;
+    fixed-address 192.168.7.60;   
+}
+
+host DoctorStrange  {
+    hardware ethernet 02:42:96:01:65:00;
+    fixed-address 192.168.7.110;  
+}
 
 service isc-dhcp-server restart
 
@@ -276,6 +317,26 @@ service isc-dhcp-relay start
 nano /etc/default/isc-dhcp-relay
 SERVERS="192.168.3.2"
 INTERFACES="eth0 eth1 eth2"
+OPTIONS=
+
+nano /etc/sysctl.conf 
+net.ipv4.ip_forward=1
+
+service isc-dhcp-relay restart
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+6. Berikan SpiderMan dan DoctorStrange alamat IP dalam rentang [Prefix IP].7.60 - [Prefix IP].7.65 dan [Prefix IP].7.110 - [Prefix IP].7.115
+
+[Vision]
+apt-get update
+apt-get install isc-dhcp-relay -y
+service isc-dhcp-relay start
+
+nano /etc/default/isc-dhcp-relay
+SERVERS="192.168.3.2"
+INTERFACES="eth0 eth1"
 OPTIONS=
 
 nano /etc/sysctl.conf 
