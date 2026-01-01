@@ -169,7 +169,9 @@
 
 - Screenshot
 
-  `Put your screenshot in here`
+  <img width="1005" height="201" alt="image" src="https://github.com/user-attachments/assets/ddac1ed4-42d1-40ff-b488-4fe970b7e97f" />
+  <img width="1016" height="180" alt="image" src="https://github.com/user-attachments/assets/09c94a92-1a43-4892-b278-59968a9d366d" />
+
 
 - Explanation
 
