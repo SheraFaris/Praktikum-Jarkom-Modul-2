@@ -1,41 +1,35 @@
 #!/bin/bash
 set -euo pipefail
 
-# Pastikan dijalankan sebagai root
+# Pastikan root
 if [ "$(id -u)" -ne 0 ]; then
   echo "Jalankan sebagai root: sudo $0"
   exit 1
 fi
 
-echo "[1/6] apt update + install isc-dhcp-server"
-apt-get update -y
-apt-get install -y isc-dhcp-server
+echo "[1/5] Update & install DHCP Server"
+apt update -y
+apt install isc-dhcp-server -y
 
-echo "[2/6] Cek versi dhcpd"
-dhcpd --version || true
-
-echo "[3/6] Set interface DHCP: eth0"
+echo "[2/5] Set interface DHCP"
 cat > /etc/default/isc-dhcp-server <<'EOF'
 INTERFACESv4="eth0"
 EOF
 
-echo "[4/6] Tulis /etc/dhcp/dhcpd.conf (PRIMARY + FAILOVER)"
+echo "[3/5] Konfigurasi dhcpd.conf (SECONDARY)"
 cat > /etc/dhcp/dhcpd.conf <<'EOF'
 authoritative;
 ddns-update-style none;
 default-lease-time 600;
 max-lease-time 7200;
 
-# (opsional tapi umum dipakai biar tidak ganggu DNS)
-ddns-update-style none;
-
-# ===== FAILOVER (PRIMARY) =====
+# ===== FAILOVER (SECONDARY) =====
 failover peer "dhcp-failover" {
-    primary;
-    address 192.168.3.2;
+    secondary;
+    address 192.168.4.2;
     port 647;
 
-    peer address 192.168.4.2;
+    peer address 192.168.3.2;
     peer port 647;
 
     max-response-delay 60;
@@ -43,12 +37,6 @@ failover peer "dhcp-failover" {
 
     # LOAD BALANCING
     load balance max seconds 3;
-
-    # Hanya ada di PRIMARY
-    mclt 3600;
-
-    # Split untuk load-balance (128 = 50/50 kira-kira)
-    split 128;
 }
 
 # ===== SUBNETS (pakai POOL + failover peer) =====
@@ -147,11 +135,11 @@ host DoctorStrange {
 }
 EOF
 
-echo "[5/6] Validate config"
+echo "[4/5] Validasi konfigurasi"
 dhcpd -t -cf /etc/dhcp/dhcpd.conf
 
-echo "[6/6] Restart DHCP server"
+echo "[5/5] Restart DHCP Server"
 systemctl restart isc-dhcp-server || service isc-dhcp-server restart
 
-echo "PRIMARY DHCP failover configured and restarted."
+echo "DHCP Failover SECONDARY aktif"
 systemctl --no-pager --full status isc-dhcp-server || true
