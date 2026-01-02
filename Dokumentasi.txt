@@ -225,6 +225,7 @@ Berikan Hulk alamat IP dalam rentang [Prefix IP].6.50 - [Prefix IP].6.55
 
 Konfigurasi DHCP Server
 
+[CaptainAmerica]
 apt-get update
 apt-get install isc-dhcp-server
 dhcpd --version
