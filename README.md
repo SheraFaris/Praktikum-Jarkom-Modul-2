@@ -244,7 +244,8 @@
 
 - Screenshot
 
-  `Put your screenshot in here`
+  <img width="1559" height="443" alt="image" src="https://github.com/user-attachments/assets/0253b931-20cc-4c96-8e59-e7cbe93f083a" />
+
 
 - Explanation
 
@@ -262,7 +263,9 @@
 
 - Screenshot
 
-  `Put your screenshot in here`
+  <img width="1497" height="325" alt="image" src="https://github.com/user-attachments/assets/f20783ce-7ced-4c2e-827b-b562f1f96d7e" />
+  <img width="1531" height="184" alt="image" src="https://github.com/user-attachments/assets/c3415d4d-859d-4266-add2-8b36688e3be8" />
+
 
 - Explanation
 
