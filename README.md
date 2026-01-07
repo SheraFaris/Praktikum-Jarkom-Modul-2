@@ -201,7 +201,6 @@
 
   `Put your screenshot in here`
   <img width="924" height="192" alt="image" src="https://github.com/user-attachments/assets/db25c2b1-99c9-4a03-8f4e-7cc0e9c53980" />
-  <img width="1011" height="152" alt="image" src="https://github.com/user-attachments/assets/a52e782c-37d6-41a3-b3e4-68bc9490a224" />
   <img width="903" height="139" alt="image" src="https://github.com/user-attachments/assets/642551fe-737c-4f53-bcf0-b8d8fe849596" />
 
 
@@ -222,9 +221,14 @@
 
 - Screenshot
 
-  `Put your screenshot in here`
+  <img width="1023" height="152" alt="image" src="https://github.com/user-attachments/assets/de379902-a391-426c-91f4-48792d8ea67a" />
+  <img width="1018" height="162" alt="image" src="https://github.com/user-attachments/assets/4624b7da-e264-44dc-acdd-9fe3b3b244aa" />
+
 
 - Explanation
+
+  <img width="788" height="368" alt="image" src="https://github.com/user-attachments/assets/593c21c8-7ac5-4f49-9f81-7da594f916d6" />
+  <img width="880" height="161" alt="image" src="https://github.com/user-attachments/assets/1e3a3358-553e-4a69-b43b-8a02159f8a9b" />
 
   `Menggunakan fixed address, untuk mengatasi konfigurasi ini.`
 
