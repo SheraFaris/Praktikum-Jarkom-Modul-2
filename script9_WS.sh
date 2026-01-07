@@ -126,7 +126,7 @@ host Thor {
 
 host SpiderMan {
     hardware ethernet 02:42:c4:d4:42:00;
-    fixed-address 192.168.7.5
+    fixed-address 192.168.7.5;
 }
 
 host DoctorStrange {
@@ -139,7 +139,7 @@ echo "[4/5] Validasi konfigurasi"
 dhcpd -t -cf /etc/dhcp/dhcpd.conf
 
 echo "[5/5] Restart DHCP Server"
-systemctl restart isc-dhcp-server || service isc-dhcp-server restart
+service isc-dhcp-server restart
 
 echo "DHCP Failover SECONDARY aktif"
-systemctl --no-pager --full status isc-dhcp-server || true
+service isc-dhcp-server status
