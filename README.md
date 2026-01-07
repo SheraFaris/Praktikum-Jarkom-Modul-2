@@ -200,6 +200,11 @@
 - Screenshot
 
   `Put your screenshot in here`
+  <img width="924" height="192" alt="image" src="https://github.com/user-attachments/assets/db25c2b1-99c9-4a03-8f4e-7cc0e9c53980" />
+  <img width="1011" height="152" alt="image" src="https://github.com/user-attachments/assets/a52e782c-37d6-41a3-b3e4-68bc9490a224" />
+  <img width="903" height="139" alt="image" src="https://github.com/user-attachments/assets/642551fe-737c-4f53-bcf0-b8d8fe849596" />
+
+
 
 - Explanation
 
@@ -221,7 +226,7 @@
 
 - Explanation
 
-  `Put your explanation in here`
+  `Menggunakan fixed address, untuk mengatasi konfigurasi ini.`
 
 <br>
 
